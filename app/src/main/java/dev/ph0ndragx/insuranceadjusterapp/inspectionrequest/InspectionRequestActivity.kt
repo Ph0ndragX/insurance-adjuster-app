@@ -4,11 +4,16 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabLayoutMediator
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestBinding
-import kotlinx.android.synthetic.main.activity_inspection_request.*
 
 class InspectionRequestActivity: AppCompatActivity() {
+
+    interface FabFragment {
+        fun shareFab(fab: FloatingActionButton)
+    }
 
     private val model: InspectionViewModel by viewModels { AppViewModelFactory.instance }
 
@@ -32,20 +37,15 @@ class InspectionRequestActivity: AppCompatActivity() {
     }
 
     private fun initTabs() {
-        val sectionsPagerAdapter =
-            SectionsPagerAdapter(
-                this,
-                supportFragmentManager,
-                fab
-            )
+        val sectionsPagerAdapter = SectionsPagerAdapter(this)
 
         binding.viewPager.apply {
             adapter = sectionsPagerAdapter
-            addOnPageChangeListener(sectionsPagerAdapter)
-            sectionsPagerAdapter.onPageSelected(currentItem)
         }
 
-        tabs.setupWithViewPager(binding.viewPager)
+        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
+            tab.text = binding.root.resources.getString(sectionsPagerAdapter.getTitle(position))
+        }.attach()
     }
 
     companion object {

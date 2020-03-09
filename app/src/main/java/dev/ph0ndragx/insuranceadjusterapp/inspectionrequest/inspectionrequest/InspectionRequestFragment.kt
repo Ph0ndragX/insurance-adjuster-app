@@ -12,11 +12,14 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentRequestBinding
+import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionRequestActivity
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
+import kotlinx.android.synthetic.main.activity_inspection_request.*
 import java.text.DateFormat
 
 class InspectionRequestFragment : Fragment(), OnMapReadyCallback {
@@ -65,15 +68,15 @@ class InspectionRequestFragment : Fragment(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onMapReady(p0: GoogleMap?) {
         map = p0
         map?.uiSettings?.isMapToolbarEnabled = false
         placeMarkerOnMap(binding.root.tag as InspectionRequest)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun placeMarkerOnMap(inspectionRequest: InspectionRequest) {
@@ -91,6 +94,18 @@ class InspectionRequestFragment : Fragment(), OnMapReadyCallback {
                 DEFAULT_ZOOM
             )
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val activity = requireActivity() as InspectionRequestActivity
+        shareFab(activity.fab)
+    }
+
+    private fun shareFab(fab: FloatingActionButton) {
+        fab.apply {
+            hide()
+        }
     }
 
     companion object {

@@ -1,63 +1,27 @@
 package dev.ph0ndragx.insuranceadjusterapp.inspectionrequest
 
-import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.document.DocumentsFragment
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.inspectionrequest.InspectionRequestFragment
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.note.NotesFragment
 
-class SectionsPagerAdapter(
-    private val context: Context,
-    fm: FragmentManager,
-    private val fab: FloatingActionButton
-) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT), ViewPager.OnPageChangeListener {
-
-    interface FabFragment {
-        fun shareFab(fab: FloatingActionButton)
-    }
+class SectionsPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
     class TabDefinition(
         val title: Int,
         val ctor: (pos: Int) -> Fragment
     )
 
-    private val createdFragments: MutableMap<Int, Fragment> = HashMap()
+    override fun getItemCount(): Int = TABS.size
 
-    override fun getItem(position: Int): Fragment {
-        if (!createdFragments.containsKey(position)) {
-            createdFragments[position] = TABS[position].ctor(position)
-        }
-
-        return createdFragments[position]!!
+    override fun createFragment(position: Int): Fragment {
+        return TABS[position].ctor(position)
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return context.resources.getString(TABS[position].title)
-    }
-
-    override fun getCount(): Int {
-        return TABS.size
-    }
-
-    override fun onPageScrollStateChanged(state: Int) {
-    }
-
-    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-    }
-
-    override fun onPageSelected(position: Int) {
-        val fragment = getItem(position)
-        if (fragment is FabFragment) {
-            fragment.shareFab(fab)
-        } else {
-            fab.hide()
-        }
-    }
+    fun getTitle(position: Int): Int = TABS[position].title
 
     companion object {
         private val TABS = arrayOf(

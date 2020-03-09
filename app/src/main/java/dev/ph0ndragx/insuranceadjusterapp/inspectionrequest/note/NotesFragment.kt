@@ -13,10 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentNoteListBinding
+import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionRequestActivity
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
-import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.SectionsPagerAdapter
+import kotlinx.android.synthetic.main.activity_inspection_request.*
 
-class NotesFragment : Fragment(), SectionsPagerAdapter.FabFragment {
+class NotesFragment : Fragment() {
 
     private val model: InspectionViewModel by activityViewModels { AppViewModelFactory.instance }
 
@@ -50,7 +51,13 @@ class NotesFragment : Fragment(), SectionsPagerAdapter.FabFragment {
         _binding = null
     }
 
-    override fun shareFab(fab: FloatingActionButton) {
+    override fun onResume() {
+        super.onResume()
+        val activity = requireActivity() as InspectionRequestActivity
+        shareFab(activity.fab)
+    }
+
+    private fun shareFab(fab: FloatingActionButton) {
         fab.apply {
             show()
             setOnClickListener {
