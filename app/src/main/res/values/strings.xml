@@ -15,6 +15,4 @@
     <string name="inspection_request_List_item_accept_button">Akceptuj</string>
     <string name="inspection_request_List_item_reject_button">Odrzuć</string>
     <string name="inspection_request_List_item_details_button">Szczegóły</string>
-
-    <string name="google_api_key">AIzaSyBZEQ1vJJ2C3KkRLpQfMCI1tOzaJevqreQ</string>
 </resources>
