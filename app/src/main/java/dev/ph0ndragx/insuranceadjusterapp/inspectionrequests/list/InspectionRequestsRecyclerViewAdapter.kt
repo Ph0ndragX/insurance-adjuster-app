@@ -11,7 +11,7 @@ import java.text.DateFormat
 
 class InspectionRequestsRecyclerViewAdapter(
     private val onClickHandlers: InspectionRequestOnClickHandlers
-) : RecyclerView.Adapter<InspectionRequestsRecyclerViewAdapter.InspectionRequestHolder>() {
+) : RecyclerView.Adapter<InspectionRequestsRecyclerViewAdapter.ViewHolder>() {
 
     private var inspectionRequests: List<InspectionRequest> = emptyList()
 
@@ -21,9 +21,9 @@ class InspectionRequestsRecyclerViewAdapter(
         fun onReject(inspectionRequest: InspectionRequest)
     }
 
-    class InspectionRequestHolder(val binding: FragmentInspectionRequestsListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: FragmentInspectionRequestsListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InspectionRequestHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = FragmentInspectionRequestsListItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -42,10 +42,10 @@ class InspectionRequestsRecyclerViewAdapter(
             onClickHandlers.onReject(binding.root.tag as InspectionRequest)
         }
 
-        return InspectionRequestHolder(binding)
+        return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: InspectionRequestHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val inspectionRequest = inspectionRequests[position]
 
         holder.binding.root.tag = inspectionRequest

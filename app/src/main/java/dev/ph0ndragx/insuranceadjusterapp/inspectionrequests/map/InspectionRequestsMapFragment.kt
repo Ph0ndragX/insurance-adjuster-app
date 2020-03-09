@@ -21,13 +21,14 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import dev.ph0ndragx.insuranceadjusterapp.R
+import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentInspectionRequestsMapBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.InspectionsViewModel
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.list.InspectionRequestsListFragment
 
 class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
 
-    private val model: InspectionsViewModel by activityViewModels()
+    private val model: InspectionsViewModel by activityViewModels { AppViewModelFactory.instance }
 
     private var _binding: FragmentInspectionRequestsMapBinding? = null
     private val binding get() = _binding!!

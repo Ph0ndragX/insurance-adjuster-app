@@ -12,9 +12,12 @@
         <activity android:name=".inspectionrequests.InspectionRequestsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".inspectionrequest.InspectionRequestActivity"
+            android:label="@string/activity_inspection_request_title">
         </activity>
 
         <meta-data

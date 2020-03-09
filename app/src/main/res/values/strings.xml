@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">InsuranceAdjusterApp</string>
 
+    <!-- Inspection request list/map -->
     <string name="activity_inspection_requests_menu_map">Mapa</string>
     <string name="activity_inspection_requests_menu_list">Lista</string>
 
@@ -15,4 +16,16 @@
     <string name="inspection_request_List_item_accept_button">Akceptuj</string>
     <string name="inspection_request_List_item_reject_button">Odrzuć</string>
     <string name="inspection_request_List_item_details_button">Szczegóły</string>
+
+    <!-- Inspection request details -->
+    <string name="activity_inspection_request_title">InspectionRequest</string>
+
+    <string name="activity_inspection_request_tab_claim">Szkoda</string>
+    <string name="activity_inspection_request_tab_inspection">Oględziny</string>
+    <string name="activity_inspection_request_tab_documents">Dokumenty</string>
+    <string name="activity_inspection_request_tab_notes">Notatki</string>
+
+    <string name="activity_inspection_request_new_note_title">Nowa notatka</string>
+    <string name="activity_inspection_request_new_note_content">Tekst notatki</string>
+    <string name="activity_inspection_request_new_note_save">Zapisz</string>
 </resources>

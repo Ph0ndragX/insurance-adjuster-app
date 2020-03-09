@@ -12,7 +12,8 @@ class InspectionRequest(
     var lat: Double,
     var lng: Double,
     var status: Status,
-    var appointment: Date? = null
+    var appointment: Date? = null,
+    val notes: MutableList<Note> = mutableListOf()
 ) {
     fun canBeRejected() = status == Status.ASSIGNED
 
@@ -27,4 +28,23 @@ class InspectionRequest(
     }
 
     fun position() = LatLng(lat, lng)
+
+    fun copy(): InspectionRequest {
+        return InspectionRequest(
+            number,
+            firstName,
+            lastName,
+            phoneNumber,
+            address,
+            lat,
+            lng,
+            status,
+            appointment,
+            notes.map { it.copy() }.toMutableList()
+        )
+    }
+
+    fun addNote(note: Note) {
+        notes.add(note.copy())
+    }
 }
