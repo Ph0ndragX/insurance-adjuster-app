@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/activity_inspection_requests_menu_action_map"
+        android:title="@string/activity_inspection_requests_menu_map"
+        android:icon="@drawable/ic_map_white_24dp"
+        app:showAsAction="always"/>
+</menu>

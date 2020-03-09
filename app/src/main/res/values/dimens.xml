@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- Inspection requests list attributes -->
+    <dimen name="inspections_requests_list_item_text_view_margin">8dp</dimen>
+    <dimen name="inspections_requests_list_item_button_margin">8dp</dimen>
+
+</resources>

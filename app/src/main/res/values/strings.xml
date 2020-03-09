@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">InsuranceAdjusterApp</string>
+
+    <string name="activity_inspection_requests_menu_map">Mapa</string>
+    <string name="activity_inspection_requests_menu_list">Lista</string>
+
+    <string name="inspection_request_status">Status</string>
+    <string name="inspection_request_status_assigned">Przypisany</string>
+    <string name="inspection_request_status_rejected">Odrzucony</string>
+    <string name="inspection_request_status_accepted">Zaakceptowany</string>
+
+    <string name="inspection_request_not_appointed">Nie umówiony</string>
+
+    <string name="inspection_request_List_item_card_name">%1$s %2$s</string>
+    <string name="inspection_request_List_item_accept_button">Akceptuj</string>
+    <string name="inspection_request_List_item_reject_button">Odrzuć</string>
+    <string name="inspection_request_List_item_details_button">Szczegóły</string>
+
+    <string name="google_api_key">AIzaSyBZEQ1vJJ2C3KkRLpQfMCI1tOzaJevqreQ</string>
 </resources>
