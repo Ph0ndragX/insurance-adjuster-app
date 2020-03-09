@@ -10,7 +10,7 @@
     <string name="inspection_request_status_rejected">Odrzucony</string>
     <string name="inspection_request_status_accepted">Zaakceptowany</string>
 
-    <string name="inspection_request_not_appointed">Nie umówiony</string>
+    <string name="inspection_request_not_appointed">Nieumówiony</string>
 
     <string name="inspection_request_List_item_card_name">%1$s %2$s</string>
     <string name="inspection_request_List_item_accept_button">Akceptuj</string>

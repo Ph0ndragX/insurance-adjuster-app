@@ -7,8 +7,9 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.R
-import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.note.NotesFragment
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.document.DocumentsFragment
+import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.inspectionrequest.InspectionRequestFragment
+import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.note.NotesFragment
 
 class SectionsPagerAdapter(
     private val context: Context,
@@ -61,7 +62,7 @@ class SectionsPagerAdapter(
     companion object {
         private val TABS = arrayOf(
             TabDefinition(R.string.activity_inspection_request_tab_inspection_request) {
-                PlaceholderFragment()
+                InspectionRequestFragment()
             },
             TabDefinition(R.string.activity_inspection_request_tab_claim) {
                 PlaceholderFragment()

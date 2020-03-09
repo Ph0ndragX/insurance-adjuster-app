@@ -19,7 +19,10 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.common.LOCATION_PERMISSION_GRANTED
@@ -36,7 +39,6 @@ class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var locationProvider: FusedLocationProviderClient
     private var map: GoogleMap? = null
-    private var selectedMarker: Marker? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,7 +124,7 @@ class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun addInspectionRequestsMarker() {
-        model.inspectionRequests().observe(this, Observer { requests ->
+        model.inspectionRequests().observe(viewLifecycleOwner, Observer { requests ->
             map?.apply {
                 for (inspectionRequest in requests) {
                     addMarker(
