@@ -22,6 +22,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
+import dev.ph0ndragx.insuranceadjusterapp.common.LOCATION_PERMISSION_GRANTED
 import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentInspectionRequestsMapBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.InspectionsViewModel
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.list.InspectionRequestsListFragment
@@ -169,7 +170,7 @@ class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
 
     companion object {
         private const val DEFAULT_ZOOM: Float = 13f
-        private const val LOCATION_PERMISSION_GRANTED = 1
+
         private const val InspectionRequestsMapFragment_FRAGMENT_ID = "InspectionRequestsMapFragment_FRAGMENT_ID"
 
         fun navigateTo(fm: FragmentManager) {

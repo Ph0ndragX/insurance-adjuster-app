@@ -20,6 +20,7 @@
     <!-- Inspection request details -->
     <string name="activity_inspection_request_title">InspectionRequest</string>
 
+    <string name="activity_inspection_request_tab_inspection_request">Zlecenie</string>
     <string name="activity_inspection_request_tab_claim">Szkoda</string>
     <string name="activity_inspection_request_tab_inspection">Oględziny</string>
     <string name="activity_inspection_request_tab_documents">Dokumenty</string>
@@ -28,4 +29,7 @@
     <string name="activity_inspection_request_new_note_title">Nowa notatka</string>
     <string name="activity_inspection_request_new_note_content">Tekst notatki</string>
     <string name="activity_inspection_request_new_note_save">Zapisz</string>
+
+    <string name="action_download">Pobierz</string>
+    <string name="document_downloading">TODO: Pobieranie dokumentu z backendu</string>
 </resources>

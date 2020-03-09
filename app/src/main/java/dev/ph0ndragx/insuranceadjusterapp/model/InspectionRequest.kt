@@ -13,7 +13,8 @@ class InspectionRequest(
     var lng: Double,
     var status: Status,
     var appointment: Date? = null,
-    val notes: MutableList<Note> = mutableListOf()
+    val notes: MutableList<Note> = mutableListOf(),
+    val documents: MutableList<Document> = mutableListOf()
 ) {
     fun canBeRejected() = status == Status.ASSIGNED
 
@@ -40,11 +41,16 @@ class InspectionRequest(
             lng,
             status,
             appointment,
-            notes.map { it.copy() }.toMutableList()
+            notes.map { it.copy() }.toMutableList(),
+            documents.map { it.copy() }.toMutableList()
         )
     }
 
     fun addNote(note: Note) {
         notes.add(note.copy())
+    }
+
+    fun addDocument(document: Document) {
+        documents.add(document.copy())
     }
 }

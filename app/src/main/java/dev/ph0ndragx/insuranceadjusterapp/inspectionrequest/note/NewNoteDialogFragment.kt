@@ -39,7 +39,7 @@ class NewNoteDialogFragment : DialogFragment() {
                 when(it.itemId) {
                     R.id.fragment_dialog_note_new_save -> {
                         model.addNote(
-                            model.inspectionRequest().value,
+                            model.inspectionRequest().value!!,
                             Note(
                                 binding.fragmentDialogNoteNewContent.text.toString(),
                                 "Gall Anonim", // TODO(psmolarski) - fill username

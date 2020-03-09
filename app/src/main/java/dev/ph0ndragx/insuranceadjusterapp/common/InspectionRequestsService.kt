@@ -1,5 +1,6 @@
 package dev.ph0ndragx.insuranceadjusterapp.common
 
+import dev.ph0ndragx.insuranceadjusterapp.model.Document
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 import dev.ph0ndragx.insuranceadjusterapp.model.Note
 import dev.ph0ndragx.insuranceadjusterapp.model.Status
@@ -20,6 +21,10 @@ class InspectionRequestsService {
             null,
             mutableListOf(
                 Note("Hello World!", "Kermit", Date())
+            ),
+            mutableListOf(
+                Document("test.pdf", "Kermit", Date()),
+                Document("test2.pdf", "Kermit Jakis", Date())
             )
         ),
         InspectionRequest(
@@ -87,6 +92,12 @@ class InspectionRequestsService {
     fun addNote(number: String, note: Note) {
         val newRequests = store.toList()
         newRequests.find { it.number == number }!!.addNote(note)
+        store = newRequests
+    }
+
+    fun addDocument(number: String, document: Document) {
+        val newRequests = store.toList()
+        newRequests.find { it.number == number }!!.addDocument(document)
         store = newRequests
     }
 }
