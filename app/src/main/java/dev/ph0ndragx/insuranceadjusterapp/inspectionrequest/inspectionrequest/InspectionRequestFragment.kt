@@ -48,10 +48,10 @@ class InspectionRequestFragment : Fragment(), OnMapReadyCallback {
             binding.activityInspectionRequestFragmentRequestPhoneNumber.text = request.phoneNumber
             binding.activityInspectionRequestFragmentRequestAddress.text = request.address
             binding.activityInspectionRequestFragmentRequestStatus.text = binding.root.resources.getString(request.status.stringId)
-            binding.activityInspectionRequestFragmentRequestAppointment.text = if(request.appointment == null) {
+            binding.activityInspectionRequestFragmentRequestAppointment.text = if(request.appointmentDate() == null) {
                 binding.root.resources.getString(R.string.inspection_request_not_appointed)
             } else {
-                DateFormat.getDateInstance().format(request.appointment)
+                DateFormat.getDateInstance().format(request.appointmentDate())
             }
 
             placeMarkerOnMap(request)

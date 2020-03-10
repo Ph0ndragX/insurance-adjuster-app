@@ -59,10 +59,10 @@ class InspectionRequestsRecyclerViewAdapter(
         holder.binding.phoneNumber.text = inspectionRequest.phoneNumber
         holder.binding.address.text = inspectionRequest.address
         holder.binding.status.text = holder.binding.status.resources.getString(inspectionRequest.status.stringId)
-        holder.binding.appointment.text = if(inspectionRequest.appointment == null) {
+        holder.binding.appointment.text = if(inspectionRequest.appointmentDate() == null) {
             holder.binding.appointment.resources.getString(R.string.inspection_request_not_appointed)
         } else {
-            DateFormat.getDateInstance().format(inspectionRequest.appointment)
+            DateFormat.getDateInstance().format(inspectionRequest.appointmentDate())
         }
 
         holder.binding.accept.visibility = if (inspectionRequest.canBeAccepted()) View.VISIBLE else View.GONE

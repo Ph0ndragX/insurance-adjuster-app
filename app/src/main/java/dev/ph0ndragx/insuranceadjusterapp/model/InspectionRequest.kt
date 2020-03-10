@@ -1,9 +1,12 @@
 package dev.ph0ndragx.insuranceadjusterapp.model
 
 import com.google.android.gms.maps.model.LatLng
+import dev.ph0ndragx.insuranceadjusterapp.model.claim.Claim
+import dev.ph0ndragx.insuranceadjusterapp.model.inspection.Inspection
 import java.util.*
 
-class InspectionRequest(
+data class InspectionRequest(
+    var claim: Claim,
     var number: String,
     var firstName: String,
     var lastName: String,
@@ -12,9 +15,9 @@ class InspectionRequest(
     var lat: Double,
     var lng: Double,
     var status: Status,
-    var appointment: Date? = null,
     val notes: MutableList<Note> = mutableListOf(),
-    val documents: MutableList<Document> = mutableListOf()
+    val documents: MutableList<Document> = mutableListOf(),
+    val inspections: MutableList<Inspection> = mutableListOf()
 ) {
     fun canBeRejected() = status == Status.ASSIGNED
 
@@ -30,8 +33,18 @@ class InspectionRequest(
 
     fun position() = LatLng(lat, lng)
 
+    fun appointmentDate(): Date? {
+        return if (inspections.isEmpty()) {
+            null
+        } else {
+            inspections.sortBy { it.sequence }
+            inspections[0].arrangedDate
+        }
+    }
+
     fun copy(): InspectionRequest {
         return InspectionRequest(
+            claim.copy(),
             number,
             firstName,
             lastName,
@@ -40,9 +53,9 @@ class InspectionRequest(
             lat,
             lng,
             status,
-            appointment,
             notes.map { it.copy() }.toMutableList(),
-            documents.map { it.copy() }.toMutableList()
+            documents.map { it.copy() }.toMutableList(),
+            inspections.map { it.copy() }.toMutableList()
         )
     }
 

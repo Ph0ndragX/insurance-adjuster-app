@@ -4,12 +4,19 @@ import dev.ph0ndragx.insuranceadjusterapp.model.Document
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 import dev.ph0ndragx.insuranceadjusterapp.model.Note
 import dev.ph0ndragx.insuranceadjusterapp.model.Status
+import dev.ph0ndragx.insuranceadjusterapp.model.claim.Claim
+import dev.ph0ndragx.insuranceadjusterapp.model.inspection.Inspection
 import java.util.*
 
 class InspectionRequestsService {
 
     private var store: List<InspectionRequest> = listOf(
         InspectionRequest(
+            Claim(
+                "T00001",
+                Date(),
+                mutableListOf()
+            ),
             "T00001/2019/M/ZO/001",
             "Jan",
             "Kowalski",
@@ -18,7 +25,6 @@ class InspectionRequestsService {
             50.068473,
             19.952604,
             Status.REJECTED,
-            null,
             mutableListOf(
                 Note("Hello World!", "Kermit", Date())
             ),
@@ -28,7 +34,12 @@ class InspectionRequestsService {
             )
         ),
         InspectionRequest(
-            "T00001/2019/M/ZO/002",
+            Claim(
+                "T00002",
+                Date(),
+                mutableListOf()
+            ),
+            "T00002/2019/M/ZO/002",
             "Marek",
             "Kowal",
             "+48 123 456 789",
@@ -38,7 +49,12 @@ class InspectionRequestsService {
             Status.ASSIGNED
         ),
         InspectionRequest(
-            "T00001/2019/M/ZO/003",
+            Claim(
+                "T00003",
+                Date(),
+                mutableListOf()
+            ),
+            "T00003/2019/M/ZO/003",
             "Stefan",
             "Lis",
             "+48 123 456 789",
@@ -48,7 +64,12 @@ class InspectionRequestsService {
             Status.ACCEPTED
         ),
         InspectionRequest(
-            "T00001/2019/M/ZO/004",
+            Claim(
+                "T00004",
+                Date(),
+                mutableListOf()
+            ),
+            "T00004/2019/M/ZO/004",
             "Marek",
             "Kowal",
             "+48 123 456 789",
@@ -58,14 +79,24 @@ class InspectionRequestsService {
             Status.ASSIGNED
         ),
         InspectionRequest(
-            "T00001/2019/M/ZO/005",
+            Claim(
+                "T00005",
+                Date(),
+                mutableListOf()
+            ),
+            "T00005/2019/M/ZO/005",
             "Marek",
             "Kowal",
             "+48 123 456 789",
             "ul. aleja Ignacego Daszyńskiego 21-23, 31-537 Kraków",
             50.056376,
             19.952216,
-            Status.ASSIGNED
+            Status.ASSIGNED,
+            inspections = mutableListOf(
+                Inspection(1, Date(), Date(), "Pierwsza wykonana bez problemu"),
+                Inspection(2, Date(), Date(), "Druga wykonana bez problemu"),
+                Inspection(3, Date(), Date(), "Trzecia też")
+            )
         )
     )
 

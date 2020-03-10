@@ -2,11 +2,13 @@ package dev.ph0ndragx.insuranceadjusterapp.inspectionrequest
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import dev.ph0ndragx.insuranceadjusterapp.common.InspectionRequestsService
 import dev.ph0ndragx.insuranceadjusterapp.model.Document
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 import dev.ph0ndragx.insuranceadjusterapp.model.Note
+import dev.ph0ndragx.insuranceadjusterapp.model.inspection.Inspection
 
 class InspectionViewModel(private val service: InspectionRequestsService) : ViewModel() {
 
@@ -14,6 +16,12 @@ class InspectionViewModel(private val service: InspectionRequestsService) : View
 
     fun inspectionRequest(): LiveData<InspectionRequest> {
         return inspectionRequest
+    }
+
+    fun inspections(): LiveData<List<Inspection>> {
+        return Transformations.map(inspectionRequest) {
+            it.inspections
+        }
     }
 
     fun loadInspectionRequest(number: String) {
