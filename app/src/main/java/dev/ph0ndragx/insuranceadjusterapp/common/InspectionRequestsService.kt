@@ -4,6 +4,7 @@ import dev.ph0ndragx.insuranceadjusterapp.model.Document
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 import dev.ph0ndragx.insuranceadjusterapp.model.Note
 import dev.ph0ndragx.insuranceadjusterapp.model.Status
+import dev.ph0ndragx.insuranceadjusterapp.model.claim.CarClaimObject
 import dev.ph0ndragx.insuranceadjusterapp.model.claim.Claim
 import dev.ph0ndragx.insuranceadjusterapp.model.inspection.Inspection
 import java.util.*
@@ -15,7 +16,38 @@ class InspectionRequestsService {
             Claim(
                 "T00001",
                 Date(),
-                mutableListOf()
+                mutableListOf(
+                    CarClaimObject(
+                        "KRK 100100",
+                        "1GCRCREH8EZ268928",
+                        "DeLorean",
+                        "DMC-12"
+                    ),
+                    CarClaimObject(
+                        "KRK 100100",
+                        "1GCRCREH8EZ268928",
+                        "DeLorean",
+                        "DMC-12"
+                    ),
+                    CarClaimObject(
+                        "KRK 100100",
+                        "1GCRCREH8EZ268928",
+                        "DeLorean",
+                        "DMC-12"
+                    ),
+                    CarClaimObject(
+                        "KRK 100100",
+                        "1GCRCREH8EZ268928",
+                        "DeLorean",
+                        "DMC-12"
+                    ),
+                    CarClaimObject(
+                        "KRK 100100",
+                        "1GCRCREH8EZ268928",
+                        "DeLorean",
+                        "DMC-12"
+                    )
+                )
             ),
             "T00001/2019/M/ZO/001",
             "Jan",
@@ -24,13 +56,18 @@ class InspectionRequestsService {
             "ul. Rakowicka 18, 31-510 Kraków",
             50.068473,
             19.952604,
-            Status.REJECTED,
+            Status.ACCEPTED,
             mutableListOf(
                 Note("Hello World!", "Kermit", Date())
             ),
             mutableListOf(
                 Document("test.pdf", "Kermit", Date()),
                 Document("test2.pdf", "Kermit Jakis", Date())
+            ),
+            inspections = mutableListOf(
+                Inspection(1, Date(), Date(), "Pierwsza wykonana bez problemu"),
+                Inspection(2, Date(), Date(), "Druga wykonana bez problemu"),
+                Inspection(3, Date(), Date(), "Trzecia też")
             )
         ),
         InspectionRequest(
@@ -91,12 +128,7 @@ class InspectionRequestsService {
             "ul. aleja Ignacego Daszyńskiego 21-23, 31-537 Kraków",
             50.056376,
             19.952216,
-            Status.ASSIGNED,
-            inspections = mutableListOf(
-                Inspection(1, Date(), Date(), "Pierwsza wykonana bez problemu"),
-                Inspection(2, Date(), Date(), "Druga wykonana bez problemu"),
-                Inspection(3, Date(), Date(), "Trzecia też")
-            )
+            Status.ASSIGNED
         )
     )
 

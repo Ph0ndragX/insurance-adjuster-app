@@ -1,83 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/activity_inspection_request_fragment_request_number"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="T00001/2019/M/ZO/001" />
 
     <TextView
         android:id="@+id/activity_inspection_request_fragment_request_name"
-        android:drawableStart="@drawable/ic_person_black_24dp"
+        style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_number"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:text="Jan Kowalski" />
 
     <TextView
         android:id="@+id/activity_inspection_request_fragment_request_phoneNumber"
-        android:drawableStart="@drawable/ic_phone_black_24dp"
+        style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:drawableStart="@drawable/ic_phone_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_name"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:text="+48 123 456 789" />
 
     <TextView
         android:id="@+id/activity_inspection_request_fragment_request_address"
-        android:drawableStart="@drawable/ic_location_on_black_24dp"
+        style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:drawableStart="@drawable/ic_location_on_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_phoneNumber"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:text="ul. Rakowicka 18, 31-510 Kraków" />
 
     <TextView
         android:id="@+id/activity_inspection_request_fragment_request_status"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
         android:drawableStart="@drawable/ic_info_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-        style="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_address"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:text="Odrzucona" />
 
-    <TextView
-        android:id="@+id/activity_inspection_request_fragment_request_appointment"
-        android:drawableStart="@drawable/ic_baseline_calendar_today_24px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-        style="@style/TextAppearance.MaterialComponents.Body1"
-        app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_status"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:id="@+id/activity_inspection_request_fragment_request_map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_appointment"
+    <View
+        android:id="@+id/activity_inspection_request_fragment_request_claim_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/text_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_status" />
+
+    <TextView
+        android:id="@+id/activity_inspection_request_fragment_request_claim_title"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
+        android:text="@string/claim"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_claim_divider" />
+
+    <TextView
+        android:id="@+id/activity_inspection_request_fragment_request_claim_number"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
+        app:layout_constraintStart_toEndOf="@+id/activity_inspection_request_fragment_request_claim_title"
+        app:layout_constraintTop_toBottomOf="@id/activity_inspection_request_fragment_request_claim_divider"
+        tools:text="T00001" />
+
+    <TextView
+        android:id="@+id/activity_inspection_request_fragment_request_claim_registration_date"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
+        android:drawableStart="@drawable/ic_baseline_calendar_today_24px"
+        app:layout_constraintStart_toEndOf="@+id/activity_inspection_request_fragment_request_claim_number"
+        app:layout_constraintTop_toBottomOf="@id/activity_inspection_request_fragment_request_claim_divider"
+        tools:text="2020.03.10" />
+
+    <TextView
+        android:id="@+id/activity_inspection_request_fragment_request_objects_title"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
+        android:text="@string/objects"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_claim_registration_date" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_inspection_request_fragment_request_objects_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_inspection_request_fragment_request_objects_title"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

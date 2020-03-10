@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentInspectionListBinding
+import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionRequestActivity
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
+import kotlinx.android.synthetic.main.activity_inspection_request.*
 
 class InspectionsListFragment : Fragment() {
 
@@ -47,4 +50,15 @@ class InspectionsListFragment : Fragment() {
         _binding = null
     }
 
+    override fun onResume() {
+        super.onResume()
+        val activity = requireActivity() as InspectionRequestActivity
+        shareFab(activity.fab)
+    }
+
+    private fun shareFab(fab: FloatingActionButton) {
+        fab.apply {
+            hide()
+        }
+    }
 }

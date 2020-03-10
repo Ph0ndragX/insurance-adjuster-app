@@ -33,4 +33,7 @@
 
     <string name="action_download">Pobierz</string>
     <string name="document_downloading">TODO: Pobieranie dokumentu z backendu</string>
+
+    <string name="claim">Szkoda</string>
+    <string name="objects">Przedmioty</string>
 </resources>
