@@ -91,7 +91,7 @@ class InspectionRequestsListFragment : Fragment(), InspectionRequestsRecyclerVie
         fun navigateTo(fm: FragmentManager) {
             val transaction = fm.beginTransaction()
             val fragment = InspectionRequestsListFragment()
-            transaction.replace(R.id.activity_inspection_requests_fragment_container, fragment, InspectionRequestsListFragment_FRAGMENT_ID)
+            transaction.replace(R.id.activity_inspection_requests_front_layer_fragment_container, fragment, InspectionRequestsListFragment_FRAGMENT_ID)
             transaction.commit()
         }
     }

@@ -29,6 +29,7 @@ import dev.ph0ndragx.insuranceadjusterapp.common.LOCATION_PERMISSION_GRANTED
 import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentInspectionRequestsMapBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.InspectionsViewModel
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.list.InspectionRequestsListFragment
+import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 
 class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
 
@@ -114,27 +115,28 @@ class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(p0: GoogleMap?) {
         map = p0
         map?.uiSettings?.isMapToolbarEnabled = false
-        addMarkers()
+
+        model.inspectionRequests().observe(viewLifecycleOwner, Observer { requests ->
+            addMarkers(requests)
+        })
     }
 
-    private fun addMarkers() {
+    private fun addMarkers(requests: List<InspectionRequest>) {
         map?.clear()
         addUserLocationMarker()
-        addInspectionRequestsMarker()
+        addInspectionRequestsMarker(requests)
     }
 
-    private fun addInspectionRequestsMarker() {
-        model.inspectionRequests().observe(viewLifecycleOwner, Observer { requests ->
-            map?.apply {
-                for (inspectionRequest in requests) {
-                    addMarker(
-                        MarkerOptions()
-                            .position(inspectionRequest.position())
-                            .title(inspectionRequest.number)
-                    ).tag = inspectionRequest
-                }
+    private fun addInspectionRequestsMarker(requests: List<InspectionRequest>) {
+        map?.apply {
+            for (inspectionRequest in requests) {
+                addMarker(
+                    MarkerOptions()
+                        .position(inspectionRequest.position())
+                        .title(inspectionRequest.number)
+                ).tag = inspectionRequest
             }
-        })
+        }
     }
 
     private fun addUserLocationMarker() {
@@ -178,7 +180,7 @@ class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
         fun navigateTo(fm: FragmentManager) {
             val transaction = fm.beginTransaction()
             val fragment = InspectionRequestsMapFragment()
-            transaction.replace(R.id.activity_inspection_requests_fragment_container, fragment, InspectionRequestsMapFragment_FRAGMENT_ID)
+            transaction.replace(R.id.activity_inspection_requests_front_layer_fragment_container, fragment, InspectionRequestsMapFragment_FRAGMENT_ID)
             transaction.commit()
         }
     }

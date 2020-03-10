@@ -73,8 +73,15 @@ class InspectionRequestsService {
         return store.find { it.number == number }?.copy()
     }
 
-    fun getInspectionRequests(): List<InspectionRequest> {
-        return store.map { it.copy() }
+    fun getInspectionRequests(filter: InspectionRequestsFilter? = null): List<InspectionRequest> {
+        val requests = store.map { it.copy() }
+        return if (filter != null) {
+            requests.filter {
+                filter.statuses.isEmpty() || filter.statuses.contains(it.status)
+            }
+        } else {
+            requests
+        }
     }
 
     fun accept(number: String) {

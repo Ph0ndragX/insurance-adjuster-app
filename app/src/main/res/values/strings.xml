@@ -2,6 +2,7 @@
     <string name="app_name">InsuranceAdjusterApp</string>
 
     <!-- Inspection request list/map -->
+    <string name="activity_inspection_requests_number">%1$d zlecenia</string>
     <string name="activity_inspection_requests_menu_map">Mapa</string>
     <string name="activity_inspection_requests_menu_list">Lista</string>
 

@@ -3,9 +3,13 @@ package dev.ph0ndragx.insuranceadjusterapp.inspectionrequests
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestsBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.list.InspectionRequestsListFragment
+import kotlinx.android.synthetic.main.activity_inspection_requests.*
+import kotlinx.android.synthetic.main.activity_inspection_requests_front_layer.*
 
 class InspectionRequestsActivity : AppCompatActivity() {
 
@@ -16,14 +20,34 @@ class InspectionRequestsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInspectionRequestsBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        binding.lifecycleOwner = this
+        binding.viewmodel = model
+        setContentView(binding.activityInspectionRequestsRoot)
         setSupportActionBar(binding.appBar)
 
         model.loadInspectionRequests()
 
+        initControls()
+
         if (savedInstanceState == null) {
             InspectionRequestsListFragment.navigateTo(supportFragmentManager)
         }
+    }
+
+    private fun initControls() {
+        setSupportActionBar(app_bar)
+
+        NavigationIconClickListener(
+            this@InspectionRequestsActivity,
+            activity_inspection_requests_front_layer,
+            activity_inspection_requests_front_layer_filter,
+            activity_inspection_requests_front_layer_up_arrow,
+            activity_inspection_requests_front_layer_text
+        )
+
+        model.inspectionRequests().observe(this, Observer {
+            activity_inspection_requests_front_layer_text.text =
+                resources.getString(R.string.activity_inspection_requests_number, it.size)
+        })
     }
 }

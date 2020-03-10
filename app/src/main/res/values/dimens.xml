@@ -6,4 +6,6 @@
     <dimen name="inspections_requests_list_item_text_view_margin">8dp</dimen>
     <dimen name="inspections_requests_list_item_button_margin">8dp</dimen>
 
+    <dimen name="inspections_requests_back_layer_section_margin">16dp</dimen>
+    <dimen name="inspections_requests_back_layer_statuses_margin">8dp</dimen>
 </resources>
