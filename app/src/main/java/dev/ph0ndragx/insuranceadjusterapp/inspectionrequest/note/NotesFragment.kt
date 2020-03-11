@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
-import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentNoteListBinding
+import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentNoteListBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionRequestActivity
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
 import kotlinx.android.synthetic.main.activity_inspection_request.*
@@ -21,7 +21,7 @@ class NotesFragment : Fragment() {
 
     private val model: InspectionViewModel by activityViewModels { AppViewModelFactory.instance }
 
-    private var _binding: ActivityInspectionRequestFragmentNoteListBinding? = null
+    private var _binding: FragmentNoteListBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: NotesRecyclerViewAdapter
@@ -30,7 +30,7 @@ class NotesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ActivityInspectionRequestFragmentNoteListBinding.inflate(inflater, container, false)
+        _binding = FragmentNoteListBinding.inflate(inflater, container, false)
 
         recyclerView = NotesRecyclerViewAdapter()
 

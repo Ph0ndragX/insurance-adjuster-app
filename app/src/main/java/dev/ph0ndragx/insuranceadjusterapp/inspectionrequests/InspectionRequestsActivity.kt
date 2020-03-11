@@ -39,14 +39,14 @@ class InspectionRequestsActivity : AppCompatActivity() {
 
         NavigationIconClickListener(
             this@InspectionRequestsActivity,
-            activity_inspection_requests_front_layer,
-            activity_inspection_requests_front_layer_filter,
-            activity_inspection_requests_front_layer_up_arrow,
-            activity_inspection_requests_front_layer_text
+            requests_front_layer,
+            requests_front_layer_filter,
+            requests_front_layer_up_arrow,
+            requests_front_layer_text
         )
 
         model.inspectionRequests().observe(this, Observer {
-            activity_inspection_requests_front_layer_text.text =
+            requests_front_layer_text.text =
                 resources.getString(R.string.activity_inspection_requests_number, it.size)
         })
     }

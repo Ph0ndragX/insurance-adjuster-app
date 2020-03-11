@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -28,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/inspection_requests_filter_statuses_section_header"
+            android:id="@+id/filter_statuses_section_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inspection_request_status"
@@ -39,7 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/inspection_requests_filter_checkbox_assigned"
+            android:id="@+id/filter_checkbox_assigned"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,29 +46,29 @@
             android:checked="@={viewmodel.filter.assignedStatusCheckbox}"
             android:layout_margin="@dimen/inspections_requests_back_layer_statuses_margin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inspection_requests_filter_statuses_section_header" />
+            app:layout_constraintTop_toBottomOf="@+id/filter_statuses_section_header" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/inspection_requests_filter_checkbox_rejected"
+            android:id="@+id/filter_checkbox_rejected"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inspection_request_status_rejected"
             android:checked="@={viewmodel.filter.rejectedStatusCheckbox}"
             android:layout_margin="@dimen/inspections_requests_back_layer_statuses_margin"
-            app:layout_constraintStart_toEndOf="@+id/inspection_requests_filter_checkbox_assigned"
-            app:layout_constraintTop_toBottomOf="@+id/inspection_requests_filter_statuses_section_header" />
+            app:layout_constraintStart_toEndOf="@+id/filter_checkbox_assigned"
+            app:layout_constraintTop_toBottomOf="@+id/filter_statuses_section_header" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/inspection_requests_filter_checkbox_accepted"
+            android:id="@+id/filter_checkbox_accepted"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inspection_request_status_accepted"
             android:checked="@={viewmodel.filter.acceptedStatusCheckbox}"
             android:layout_margin="@dimen/inspections_requests_back_layer_statuses_margin"
-            app:layout_constraintStart_toEndOf="@+id/inspection_requests_filter_checkbox_rejected"
-            app:layout_constraintTop_toBottomOf="@+id/inspection_requests_filter_statuses_section_header" />
+            app:layout_constraintStart_toEndOf="@+id/filter_checkbox_rejected"
+            app:layout_constraintTop_toBottomOf="@+id/filter_statuses_section_header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

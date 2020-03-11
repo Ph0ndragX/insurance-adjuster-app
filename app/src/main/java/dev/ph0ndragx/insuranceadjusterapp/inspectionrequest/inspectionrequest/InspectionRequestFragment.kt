@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
-import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentRequestBinding
+import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentInspectionRequestBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionRequestActivity
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
 import kotlinx.android.synthetic.main.activity_inspection_request.*
@@ -21,7 +21,7 @@ class InspectionRequestFragment : Fragment() {
 
     private val model: InspectionViewModel by activityViewModels { AppViewModelFactory.instance }
 
-    private var _binding: ActivityInspectionRequestFragmentRequestBinding? = null
+    private var _binding: FragmentInspectionRequestBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewAdapter: InspectionRequestClaimObjectsRecyclerViewAdapter
@@ -30,29 +30,29 @@ class InspectionRequestFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ActivityInspectionRequestFragmentRequestBinding.inflate(inflater, container, false)
+        _binding = FragmentInspectionRequestBinding.inflate(inflater, container, false)
 
         viewAdapter = InspectionRequestClaimObjectsRecyclerViewAdapter()
 
-        binding.activityInspectionRequestFragmentRequestObjectsRecyclerView.apply {
+        binding.claimObjectsRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = viewAdapter
         }
 
         model.inspectionRequest().observe(viewLifecycleOwner, Observer { request ->
             binding.root.tag = request
-            binding.activityInspectionRequestFragmentRequestNumber.text = request.number
-            binding.activityInspectionRequestFragmentRequestName.text = binding.root.resources.getString(
+            binding.number.text = request.number
+            binding.name.text = binding.root.resources.getString(
                 R.string.inspection_request_List_item_card_name,
                 request.firstName,
                 request.lastName
             )
-            binding.activityInspectionRequestFragmentRequestPhoneNumber.text = request.phoneNumber
-            binding.activityInspectionRequestFragmentRequestAddress.text = request.address
-            binding.activityInspectionRequestFragmentRequestStatus.text = binding.root.resources.getString(request.status.stringId)
+            binding.phoneNumber.text = request.phoneNumber
+            binding.address.text = request.address
+            binding.status.text = binding.root.resources.getString(request.status.stringId)
 
-            binding.activityInspectionRequestFragmentRequestClaimNumber.text = request.claim.number
-            binding.activityInspectionRequestFragmentRequestClaimRegistrationDate.text = DateFormat.getDateInstance().format(request.claim.registrationDate)
+            binding.claimNumber.text = request.claim.number
+            binding.claimRegistrationDate.text = DateFormat.getDateInstance().format(request.claim.registrationDate)
 
             viewAdapter.updateData(request.claim.objects)
         })

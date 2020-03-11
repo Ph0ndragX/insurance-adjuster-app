@@ -8,9 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
-import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentInspectionListBinding
+import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentInspectionListBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionRequestActivity
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
 import kotlinx.android.synthetic.main.activity_inspection_request.*
@@ -19,7 +20,7 @@ class InspectionsListFragment : Fragment() {
 
     private val model: InspectionViewModel by activityViewModels { AppViewModelFactory.instance}
 
-    private var _binding: ActivityInspectionRequestFragmentInspectionListBinding? = null
+    private var _binding: FragmentInspectionListBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewAdapter: InspectionsRecyclerViewAdapter
@@ -28,11 +29,11 @@ class InspectionsListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ActivityInspectionRequestFragmentInspectionListBinding.inflate(inflater, container, false)
+        _binding = FragmentInspectionListBinding.inflate(inflater, container, false)
 
         viewAdapter = InspectionsRecyclerViewAdapter()
 
-        binding.activityInspectionRequestFragmentInspectionListRecyclerView.apply {
+        with(binding.root as RecyclerView) {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
             adapter = viewAdapter

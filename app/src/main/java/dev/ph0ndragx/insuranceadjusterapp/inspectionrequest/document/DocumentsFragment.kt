@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.common.FILE_SELECT_CODE
-import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentDocumentListBinding
+import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentDocumentListBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionRequestActivity
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
 import dev.ph0ndragx.insuranceadjusterapp.model.Document
@@ -30,7 +30,7 @@ class DocumentsFragment : Fragment() {
 
     private val model: InspectionViewModel by activityViewModels { AppViewModelFactory.instance }
 
-    private var _binding: ActivityInspectionRequestFragmentDocumentListBinding? = null
+    private var _binding: FragmentDocumentListBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var recyclerView: DocumentsRecyclerViewAdapter
@@ -39,7 +39,7 @@ class DocumentsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ActivityInspectionRequestFragmentDocumentListBinding.inflate(inflater, container, false)
+        _binding = FragmentDocumentListBinding.inflate(inflater, container, false)
 
         recyclerView = DocumentsRecyclerViewAdapter()
 

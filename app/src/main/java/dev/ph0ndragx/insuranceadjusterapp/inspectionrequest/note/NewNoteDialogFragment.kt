@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
-import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentNoteNewBinding
+import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentNoteNewBinding
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
 import dev.ph0ndragx.insuranceadjusterapp.model.Note
 import java.util.*
@@ -19,14 +19,14 @@ class NewNoteDialogFragment : DialogFragment() {
 
     private val model: InspectionViewModel by activityViewModels { AppViewModelFactory.instance }
 
-    private var _binding: ActivityInspectionRequestFragmentNoteNewBinding? = null
+    private var _binding: FragmentNoteNewBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ActivityInspectionRequestFragmentNoteNewBinding.inflate(inflater, container, false)
+        _binding = FragmentNoteNewBinding.inflate(inflater, container, false)
         return binding.root
     }
 

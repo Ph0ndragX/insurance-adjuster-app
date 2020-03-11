@@ -4,7 +4,7 @@ package dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.note
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentNoteListItemBinding
+import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentNoteListItemBinding
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 import dev.ph0ndragx.insuranceadjusterapp.model.Note
 import java.text.DateFormat
@@ -13,10 +13,10 @@ class NotesRecyclerViewAdapter : RecyclerView.Adapter<NotesRecyclerViewAdapter.V
 
     private var notes: List<Note> = emptyList()
 
-    class ViewHolder(val binding: ActivityInspectionRequestFragmentNoteListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: FragmentNoteListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ActivityInspectionRequestFragmentNoteListItemBinding.inflate(
+        val binding = FragmentNoteListItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -30,9 +30,9 @@ class NotesRecyclerViewAdapter : RecyclerView.Adapter<NotesRecyclerViewAdapter.V
 
         holder.apply {
             binding.root.tag = item
-            binding.fragmentNoteListItemAuthor.text = item.author
-            binding.fragmentNoteListItemDate.text = DateFormat.getDateInstance().format(item.date)
-            binding.fragmentNoteListItemContent.text = item.content
+            binding.author.text = item.author
+            binding.date.text = DateFormat.getDateInstance().format(item.date)
+            binding.content.text = item.content
         }
     }
 

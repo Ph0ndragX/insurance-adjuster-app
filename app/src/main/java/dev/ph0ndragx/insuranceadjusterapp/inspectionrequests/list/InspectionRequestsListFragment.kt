@@ -34,7 +34,7 @@ class InspectionRequestsListFragment : Fragment(), InspectionRequestsRecyclerVie
 
         viewAdapter = InspectionRequestsRecyclerViewAdapter(this)
 
-        binding.fragmentInspectionRequestsListRecyclerView.apply {
+        binding.recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
             adapter = viewAdapter
@@ -91,7 +91,7 @@ class InspectionRequestsListFragment : Fragment(), InspectionRequestsRecyclerVie
         fun navigateTo(fm: FragmentManager) {
             val transaction = fm.beginTransaction()
             val fragment = InspectionRequestsListFragment()
-            transaction.replace(R.id.activity_inspection_requests_front_layer_fragment_container, fragment, InspectionRequestsListFragment_FRAGMENT_ID)
+            transaction.replace(R.id.requests_front_layer_fragment_container, fragment, InspectionRequestsListFragment_FRAGMENT_ID)
             transaction.commit()
         }
     }

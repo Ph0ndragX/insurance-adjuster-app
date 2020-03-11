@@ -180,7 +180,7 @@ class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
         fun navigateTo(fm: FragmentManager) {
             val transaction = fm.beginTransaction()
             val fragment = InspectionRequestsMapFragment()
-            transaction.replace(R.id.activity_inspection_requests_front_layer_fragment_container, fragment, InspectionRequestsMapFragment_FRAGMENT_ID)
+            transaction.replace(R.id.requests_front_layer_fragment_container, fragment, InspectionRequestsMapFragment_FRAGMENT_ID)
             transaction.commit()
         }
     }

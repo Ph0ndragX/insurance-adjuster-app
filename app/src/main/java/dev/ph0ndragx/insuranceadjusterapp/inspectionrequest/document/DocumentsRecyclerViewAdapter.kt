@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import dev.ph0ndragx.insuranceadjusterapp.R
-import dev.ph0ndragx.insuranceadjusterapp.databinding.ActivityInspectionRequestFragmentDocumentListItemBinding
+import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentDocumentListItemBinding
 import dev.ph0ndragx.insuranceadjusterapp.model.Document
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 import java.text.DateFormat
@@ -14,10 +14,10 @@ class DocumentsRecyclerViewAdapter : RecyclerView.Adapter<DocumentsRecyclerViewA
 
     private var documents: List<Document> = ArrayList()
 
-    class ViewHolder(val binding: ActivityInspectionRequestFragmentDocumentListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: FragmentDocumentListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ActivityInspectionRequestFragmentDocumentListItemBinding.inflate(
+        val binding = FragmentDocumentListItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -31,10 +31,10 @@ class DocumentsRecyclerViewAdapter : RecyclerView.Adapter<DocumentsRecyclerViewA
 
         holder.apply {
             binding.root.tag = item
-            binding.fragmentDocumentListItemAuthor.text = item.author
-            binding.fragmentDocumentListItemFilename.text = item.fileName
-            binding.fragmentDocumentListItemDate.text = DateFormat.getDateInstance().format(item.date)
-            binding.fragmentDocumentListItemDownload.apply {
+            binding.author.text = item.author
+            binding.filename.text = item.fileName
+            binding.date.text = DateFormat.getDateInstance().format(item.date)
+            binding.download.apply {
                 setOnClickListener {
                     Snackbar.make(binding.root, binding.root.resources.getString(R.string.document_downloading), Snackbar.LENGTH_LONG).show()
                 }
