@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".inspectionrequests.InspectionRequestsActivity">
+        <activity android:name=".login.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -17,6 +17,10 @@
         </activity>
         <activity
             android:name=".inspectionrequest.InspectionRequestActivity"
+            android:label="@string/activity_inspection_request_title">
+        </activity>
+        <activity
+            android:name=".inspectionrequests.InspectionRequestsActivity"
             android:label="@string/activity_inspection_request_title">
         </activity>
 

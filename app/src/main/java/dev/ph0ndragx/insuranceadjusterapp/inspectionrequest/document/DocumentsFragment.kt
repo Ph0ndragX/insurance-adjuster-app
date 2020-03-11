@@ -117,7 +117,7 @@ class DocumentsFragment : Fragment() {
                         model.inspectionRequest().value!!,
                         Document(
                             fileName,
-                            "Kermit", // TODO(psmolarki) fill username,
+                            model.user(),
                             Date()
                         )
                     )

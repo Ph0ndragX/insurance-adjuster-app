@@ -5,14 +5,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import dev.ph0ndragx.insuranceadjusterapp.common.InspectionRequestsService
+import dev.ph0ndragx.insuranceadjusterapp.common.SecurityService
 import dev.ph0ndragx.insuranceadjusterapp.model.Document
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 import dev.ph0ndragx.insuranceadjusterapp.model.Note
 import dev.ph0ndragx.insuranceadjusterapp.model.inspection.Inspection
 
-class InspectionViewModel(private val service: InspectionRequestsService) : ViewModel() {
+class InspectionViewModel(
+    private val service: InspectionRequestsService,
+    private val security: SecurityService
+) : ViewModel() {
 
     private val inspectionRequest: MutableLiveData<InspectionRequest> = MutableLiveData()
+
+    fun user(): String {
+        return security.login()
+    }
 
     fun inspectionRequest(): LiveData<InspectionRequest> {
         return inspectionRequest

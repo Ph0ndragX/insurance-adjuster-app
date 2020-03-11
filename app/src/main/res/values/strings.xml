@@ -36,4 +36,8 @@
 
     <string name="claim">Szkoda</string>
     <string name="objects">Przedmioty</string>
+
+    <string name="loginButton">Zaloguj</string>
+    <string name="login_text">Login</string>
+    <string name="password_text">Hasło</string>
 </resources>

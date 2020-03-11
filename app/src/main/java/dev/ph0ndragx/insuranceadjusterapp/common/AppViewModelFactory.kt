@@ -4,17 +4,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionViewModel
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.InspectionsViewModel
+import dev.ph0ndragx.insuranceadjusterapp.login.LoginViewModel
 
 class AppViewModelFactory : ViewModelProvider.Factory {
 
-    private val service: InspectionRequestsService = InspectionRequestsService()
+    private val securityService: SecurityService = SecurityService()
+    private val inspectionRequestsService: InspectionRequestsService = InspectionRequestsService()
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(InspectionsViewModel::class.java)) {
-            return InspectionsViewModel(service) as T
+            return InspectionsViewModel(inspectionRequestsService) as T
         } else if (modelClass.isAssignableFrom(InspectionViewModel::class.java)) {
-            return InspectionViewModel(service) as T
+            return InspectionViewModel(inspectionRequestsService, securityService) as T
+        } else if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+            return LoginViewModel(securityService) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -42,7 +42,7 @@ class NewNoteDialogFragment : DialogFragment() {
                             model.inspectionRequest().value!!,
                             Note(
                                 binding.fragmentDialogNoteNewContent.text.toString(),
-                                "Gall Anonim", // TODO(psmolarski) - fill username
+                                model.user(),
                                 Calendar.getInstance().time
                             )
                         )
