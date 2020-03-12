@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,7 +34,7 @@ class DocumentsFragment : Fragment() {
     private var _binding: FragmentDocumentListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var recyclerView: DocumentsRecyclerViewAdapter
+    private val recyclerViewAdapter: DocumentsRecyclerViewAdapter = DocumentsRecyclerViewAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,15 +42,17 @@ class DocumentsFragment : Fragment() {
     ): View? {
         _binding = FragmentDocumentListBinding.inflate(inflater, container, false)
 
-        recyclerView = DocumentsRecyclerViewAdapter()
+        val recyclerView: RecyclerView = binding.root as RecyclerView
 
-        with(binding.root as RecyclerView) {
+        with(recyclerView) {
             layoutManager = LinearLayoutManager(context)
-            adapter = recyclerView
+            adapter = recyclerViewAdapter
         }
 
+        recyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+
         model.inspectionRequest().observe(viewLifecycleOwner, Observer {
-            recyclerView.updateData(it)
+            recyclerViewAdapter.updateData(it)
         })
 
         return binding.root

@@ -6,7 +6,7 @@
         android:id="@+id/requests_front_layer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:elevation="8dp"
         android:background="@drawable/activity_inspection_requests_front_layer_shape">
 

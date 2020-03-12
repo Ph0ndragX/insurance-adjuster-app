@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -23,7 +24,7 @@ class InspectionsListFragment : Fragment() {
     private var _binding: FragmentInspectionListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewAdapter: InspectionsRecyclerViewAdapter
+    private val recyclerViewAdapter: InspectionsRecyclerViewAdapter = InspectionsRecyclerViewAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,16 +32,18 @@ class InspectionsListFragment : Fragment() {
     ): View? {
         _binding = FragmentInspectionListBinding.inflate(inflater, container, false)
 
-        viewAdapter = InspectionsRecyclerViewAdapter()
+        val recyclerView: RecyclerView = binding.root as RecyclerView
 
-        with(binding.root as RecyclerView) {
+        with(recyclerView) {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = viewAdapter
+            layoutManager = LinearLayoutManager(context)
+            adapter = recyclerViewAdapter
         }
 
+        recyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+
         model.inspections().observe(viewLifecycleOwner, Observer { requests ->
-            viewAdapter.updateData(requests)
+            recyclerViewAdapter.updateData(requests)
         })
 
         return binding.root

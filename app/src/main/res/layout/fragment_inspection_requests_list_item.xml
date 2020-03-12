@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView
+<com.google.android.material.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@style/SensibleDefaultsMaterialCard"
@@ -13,68 +13,74 @@
 
         <TextView
             android:id="@+id/number"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="T00001/2019/M/ZO/001" />
 
         <TextView
             android:id="@+id/name"
-            android:drawableStart="@drawable/ic_person_black_24dp"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/number"
-            app:layout_constraintStart_toStartOf="parent"/>
+            tools:text="Jan Kowalski" />
 
         <TextView
             android:id="@+id/phoneNumber"
-            android:drawableStart="@drawable/ic_phone_black_24dp"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_phone_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name"
-            app:layout_constraintStart_toStartOf="parent"/>
+            tools:text="+48 123 456 789" />
 
         <TextView
             android:id="@+id/address"
-            android:drawableStart="@drawable/ic_location_on_black_24dp"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_location_on_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
-            app:layout_constraintStart_toStartOf="parent"/>
+            tools:text="ul. Rakowicka 18, 31-510 Kraków" />
 
         <TextView
             android:id="@+id/status"
-            android:drawableStart="@drawable/ic_info_black_24dp"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_info_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/address"
-            app:layout_constraintStart_toStartOf="parent"/>
+            tools:text="Zaakceptowany" />
 
         <TextView
             android:id="@+id/appointment"
-            android:drawableStart="@drawable/ic_baseline_calendar_today_24px"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:drawableStart="@drawable/ic_baseline_calendar_today_24px"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/status"
-            app:layout_constraintStart_toStartOf="parent"/>
+            tools:text="11 Mar 2020" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/accept"

@@ -28,7 +28,6 @@ class InspectionsRecyclerViewAdapter : RecyclerView.Adapter<InspectionsRecyclerV
 
         holder.binding.root.tag = inspection
 
-        holder.binding.sequence.text = inspection.sequence.toString()
         holder.binding.arrangedDate.text =
             if (inspection.arrangedDate == null ) "" else DateFormat.getDateInstance().format(inspection.arrangedDate)
         holder.binding.date.text =
