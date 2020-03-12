@@ -20,10 +20,10 @@ class InspectionsViewModel(private val service: InspectionRequestsService) : Vie
     }
 
     fun loadInspectionRequests() {
-        state.value = InspectionRequestsState(
+        state.postValue(InspectionRequestsState(
             service.getInspectionRequests(state.value!!.filter),
             state.value!!.filter
-        )
+        ))
     }
 
     fun accept(number: String) {

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.databinding.FragmentInspectionRequestsListBinding
@@ -16,8 +17,12 @@ import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.InspectionRequestAct
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.InspectionsViewModel
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.map.InspectionRequestsMapFragment
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import java.util.concurrent.TimeUnit
 
-class InspectionRequestsListFragment : Fragment(), InspectionRequestsRecyclerViewAdapter.InspectionRequestOnClickHandlers {
+class InspectionRequestsListFragment :
+    Fragment(), InspectionRequestsRecyclerViewAdapter.InspectionRequestOnClickHandlers, SwipeRefreshLayout.OnRefreshListener {
 
     private val model: InspectionsViewModel by activityViewModels { AppViewModelFactory.instance}
 
@@ -43,6 +48,10 @@ class InspectionRequestsListFragment : Fragment(), InspectionRequestsRecyclerVie
         model.inspectionRequests().observe(viewLifecycleOwner, Observer { requests ->
             viewAdapter.updateData(requests)
         })
+
+        (binding.root as SwipeRefreshLayout).also {
+            it.setOnRefreshListener(this)
+        }
 
         setHasOptionsMenu(true)
 
@@ -94,5 +103,14 @@ class InspectionRequestsListFragment : Fragment(), InspectionRequestsRecyclerVie
             transaction.replace(R.id.requests_front_layer_fragment_container, fragment, InspectionRequestsListFragment_FRAGMENT_ID)
             transaction.commit()
         }
+    }
+
+    override fun onRefresh() {
+        Observable.timer(3, TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                model.loadInspectionRequests()
+                binding.swipeRefresh.isRefreshing = false
+            }
     }
 }
