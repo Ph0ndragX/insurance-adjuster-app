@@ -43,7 +43,7 @@ class InspectionRequestsActivity : AppCompatActivity() {
 
         initControls()
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null && resources.configuration.smallestScreenWidthDp < 600) {
             InspectionRequestsListFragment.navigateTo(supportFragmentManager)
         }
     }
