@@ -1,10 +1,12 @@
 package dev.ph0ndragx.insuranceadjusterapp.inspectionrequests.map
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -19,10 +21,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
 import dev.ph0ndragx.insuranceadjusterapp.common.LOCATION_PERMISSION_GRANTED
@@ -40,6 +39,7 @@ class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var locationProvider: FusedLocationProviderClient
     private var map: GoogleMap? = null
+    private var selectedMarker: Marker? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,6 +115,17 @@ class InspectionRequestsMapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(p0: GoogleMap?) {
         map = p0
         map?.uiSettings?.isMapToolbarEnabled = false
+        map?.apply {
+            setOnMarkerClickListener {
+                if (it.tag is InspectionRequest) {
+                    val inspectionRequest = it.tag as InspectionRequest
+                    val gmmIntentUri = Uri.parse("geo:0,0?q=" + inspectionRequest.address)
+                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                    startActivity(Intent.createChooser(mapIntent, null))
+                }
+                false
+            }
+        }
 
         model.inspectionRequests().observe(viewLifecycleOwner, Observer { requests ->
             addMarkers(requests)
