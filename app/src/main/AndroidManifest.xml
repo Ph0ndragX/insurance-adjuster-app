@@ -17,7 +17,8 @@
         </activity>
         <activity
             android:name=".inspectionrequest.InspectionRequestActivity"
-            android:label="@string/activity_inspection_request_title">
+            android:label="@string/activity_inspection_request_title"
+            android:parentActivityName=".inspectionrequests.InspectionRequestsActivity">
         </activity>
         <activity
             android:name=".inspectionrequests.InspectionRequestsActivity"

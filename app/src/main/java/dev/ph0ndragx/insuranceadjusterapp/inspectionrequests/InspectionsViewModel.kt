@@ -51,4 +51,8 @@ class InspectionsViewModel(private val service: InspectionRequestsService) : Vie
             newFilter
         )
     }
+
+    fun simulateBackendAdd(): InspectionRequest {
+        return service.simulateBackendAdd()
+    }
 }

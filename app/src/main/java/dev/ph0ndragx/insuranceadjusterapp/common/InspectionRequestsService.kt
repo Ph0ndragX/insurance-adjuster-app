@@ -11,7 +11,7 @@ import java.util.*
 
 class InspectionRequestsService {
 
-    private var store: List<InspectionRequest> = listOf(
+    private var store: MutableList<InspectionRequest> = mutableListOf(
         InspectionRequest(
             Claim(
                 "T00001",
@@ -114,21 +114,6 @@ class InspectionRequestsService {
             50.056376,
             19.952216,
             Status.ASSIGNED
-        ),
-        InspectionRequest(
-            Claim(
-                "T00005",
-                Date(),
-                mutableListOf()
-            ),
-            "T00005/2019/M/ZO/005",
-            "Marek",
-            "Kowal",
-            "+48 123 456 789",
-            "ul. aleja Ignacego Daszyńskiego 21-23, 31-537 Kraków",
-            50.056376,
-            19.952216,
-            Status.ASSIGNED
         )
     )
 
@@ -148,26 +133,46 @@ class InspectionRequestsService {
     }
 
     fun accept(number: String) {
-        val newRequests = store.toList()
+        val newRequests = store.toMutableList()
         newRequests.find { it.number == number }!!.accept()
         store = newRequests
     }
 
     fun reject(number: String) {
-        val newRequests = store.toList()
+        val newRequests = store.toMutableList()
         newRequests.find { it.number == number }!!.reject()
         store = newRequests
     }
 
     fun addNote(number: String, note: Note) {
-        val newRequests = store.toList()
+        val newRequests = store.toMutableList()
         newRequests.find { it.number == number }!!.addNote(note)
         store = newRequests
     }
 
     fun addDocument(number: String, document: Document) {
-        val newRequests = store.toList()
+        val newRequests = store.toMutableList()
         newRequests.find { it.number == number }!!.addDocument(document)
         store = newRequests
+    }
+
+    fun simulateBackendAdd(): InspectionRequest {
+        val newInspectionRequest = InspectionRequest(
+            Claim(
+                "T00005",
+                Date(),
+                mutableListOf()
+            ),
+            "T00005/2019/M/ZO/005",
+            "Marek",
+            "Kowal",
+            "+48 123 456 789",
+            "ul. aleja Ignacego Daszyńskiego 21-23, 31-537 Kraków",
+            50.056376,
+            19.952216,
+            Status.ASSIGNED
+        )
+        store.add(newInspectionRequest)
+        return newInspectionRequest
     }
 }

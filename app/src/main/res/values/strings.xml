@@ -5,6 +5,7 @@
     <string name="activity_inspection_requests_number">%1$d zlecenia</string>
     <string name="activity_inspection_requests_menu_map">Mapa</string>
     <string name="activity_inspection_requests_menu_list">Lista</string>
+    <string name="activity_inspection_requests_menu_action_simulate_add">Backend: Dodaj</string>
 
     <string name="inspection_request_status">Status</string>
     <string name="inspection_request_status_assigned">Przypisany</string>
@@ -40,4 +41,11 @@
     <string name="loginButton">Zaloguj</string>
     <string name="login_text">Login</string>
     <string name="password_text">Hasło</string>
+
+    <!-- Notifications -->
+    <string name="notification_new_inspection_request_channel_id">newInspectionRequest</string>
+    <string name="notification_new_inspection_request_channel_desc">Nowe zlecenia oględzin</string>
+
+    <string name="notification_new_inspection_request_title">Nowe zlecenie oględzin</string>
+    <string name="notification_new_inspection_request_text">Zlecenie oględzin: %s</string>
 </resources>
