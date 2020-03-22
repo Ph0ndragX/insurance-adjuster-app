@@ -110,27 +110,4 @@
         app:layout_constraintTop_toBottomOf="@id/claim_divider"
         tools:text="2020.03.10" />
 
-    <TextView
-        android:id="@+id/claim_objects_title"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/inspections_requests_list_item_text_view_margin"
-        android:text="@string/objects"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/claim_registration_date" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/claim_objects_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constrainedHeight="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/claim_objects_title"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

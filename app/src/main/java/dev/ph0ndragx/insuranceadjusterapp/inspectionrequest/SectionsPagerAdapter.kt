@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.document.DocumentsFragment
-import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.inspection.InspectionsListFragment
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.inspectionrequest.InspectionRequestFragment
 import dev.ph0ndragx.insuranceadjusterapp.inspectionrequest.note.NotesFragment
 
@@ -28,9 +27,6 @@ class SectionsPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         private val TABS = arrayOf(
             TabDefinition(R.string.activity_inspection_request_tab_inspection_request) {
                 InspectionRequestFragment()
-            },
-            TabDefinition(R.string.activity_inspection_request_tab_inspection) {
-                InspectionsListFragment()
             },
             TabDefinition(R.string.activity_inspection_request_tab_documents) {
                 DocumentsFragment()

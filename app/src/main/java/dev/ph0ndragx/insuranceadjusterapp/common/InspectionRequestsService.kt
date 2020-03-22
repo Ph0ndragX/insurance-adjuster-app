@@ -4,7 +4,6 @@ import dev.ph0ndragx.insuranceadjusterapp.model.Document
 import dev.ph0ndragx.insuranceadjusterapp.model.InspectionRequest
 import dev.ph0ndragx.insuranceadjusterapp.model.Note
 import dev.ph0ndragx.insuranceadjusterapp.model.Status
-import dev.ph0ndragx.insuranceadjusterapp.model.claim.CarClaimObject
 import dev.ph0ndragx.insuranceadjusterapp.model.claim.Claim
 import dev.ph0ndragx.insuranceadjusterapp.model.inspection.Inspection
 import java.util.*
@@ -15,39 +14,7 @@ class InspectionRequestsService {
         InspectionRequest(
             Claim(
                 "T00001",
-                Date(),
-                mutableListOf(
-                    CarClaimObject(
-                        "KRK 100100",
-                        "1GCRCREH8EZ268928",
-                        "DeLorean",
-                        "DMC-12"
-                    ),
-                    CarClaimObject(
-                        "KRK 100100",
-                        "1GCRCREH8EZ268928",
-                        "DeLorean",
-                        "DMC-12"
-                    ),
-                    CarClaimObject(
-                        "KRK 100100",
-                        "1GCRCREH8EZ268928",
-                        "DeLorean",
-                        "DMC-12"
-                    ),
-                    CarClaimObject(
-                        "KRK 100100",
-                        "1GCRCREH8EZ268928",
-                        "DeLorean",
-                        "DMC-12"
-                    ),
-                    CarClaimObject(
-                        "KRK 100100",
-                        "1GCRCREH8EZ268928",
-                        "DeLorean",
-                        "DMC-12"
-                    )
-                )
+                Date()
             ),
             "T00001/2019/M/ZO/001",
             "Jan",
@@ -73,8 +40,7 @@ class InspectionRequestsService {
         InspectionRequest(
             Claim(
                 "T00002",
-                Date(),
-                mutableListOf()
+                Date()
             ),
             "T00002/2019/M/ZO/002",
             "Marek",
@@ -88,8 +54,7 @@ class InspectionRequestsService {
         InspectionRequest(
             Claim(
                 "T00003",
-                Date(),
-                mutableListOf()
+                Date()
             ),
             "T00003/2019/M/ZO/003",
             "Stefan",
@@ -103,8 +68,7 @@ class InspectionRequestsService {
         InspectionRequest(
             Claim(
                 "T00004",
-                Date(),
-                mutableListOf()
+                Date()
             ),
             "T00004/2019/M/ZO/004",
             "Marek",
@@ -160,8 +124,7 @@ class InspectionRequestsService {
         val newInspectionRequest = InspectionRequest(
             Claim(
                 "T00005",
-                Date(),
-                mutableListOf()
+                Date()
             ),
             "T00005/2019/M/ZO/005",
             "Marek",

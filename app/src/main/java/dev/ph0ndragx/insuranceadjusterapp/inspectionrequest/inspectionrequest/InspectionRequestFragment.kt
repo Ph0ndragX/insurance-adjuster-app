@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.ph0ndragx.insuranceadjusterapp.R
 import dev.ph0ndragx.insuranceadjusterapp.common.AppViewModelFactory
@@ -24,20 +23,11 @@ class InspectionRequestFragment : Fragment() {
     private var _binding: FragmentInspectionRequestBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewAdapter: InspectionRequestClaimObjectsRecyclerViewAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentInspectionRequestBinding.inflate(inflater, container, false)
-
-        viewAdapter = InspectionRequestClaimObjectsRecyclerViewAdapter()
-
-        binding.claimObjectsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = viewAdapter
-        }
 
         model.inspectionRequest().observe(viewLifecycleOwner, Observer { request ->
             binding.root.tag = request
@@ -53,8 +43,6 @@ class InspectionRequestFragment : Fragment() {
 
             binding.claimNumber.text = request.claim.number
             binding.claimRegistrationDate.text = DateFormat.getDateInstance().format(request.claim.registrationDate)
-
-            viewAdapter.updateData(request.claim.objects)
         })
 
         return binding.root

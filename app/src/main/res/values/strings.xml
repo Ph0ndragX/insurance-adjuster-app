@@ -36,7 +36,6 @@
     <string name="document_downloading">TODO: Pobieranie dokumentu z backendu</string>
 
     <string name="claim">Szkoda</string>
-    <string name="objects">Przedmioty</string>
 
     <string name="loginButton">Zaloguj</string>
     <string name="login_text">Login</string>
